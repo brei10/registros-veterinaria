@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+			crossorigin="anonymous"
+		/>
+		<title>veterinaria</title>
+	</head>
+	<body>
+		<h1>Registro de Ingreso</h1>
+		<br />
+
+		<fieldset>
+			<form id="formulario">
+				<label for="propietario">Nombre </label>
+				<input
+					type="text"
+					id="propietario"
+					placeholder="Nombre del Propietario"
+				/>
+				<br />
+				<label for="mascota">Nombre Mascota</label>
+				<input type="text" id="mascota" placeholder="Nombre Mascota" />
+				<br />
+				<label for="dateIngreso">Fecha de Ingreso</label>
+				<input
+					type="date"
+					id="dateIngreso"
+					placeholder="Fecha de Ingreso"
+				/><br />
+				<label for="sintomas">Sintomas</label>
+				<input type="text" id="sintomas" placeholder="Sintomas" />
+				<br />
+
+				<button type="button" id="btnForm">Registrar</button>
+                
+			</form>
+		</fieldset>
+        <br/>
+
+
+        <div id="padreTarjetas">
+            
+
+
+        </div>
+        <br>
+        <br/>
+        <br/>
+        <table border="1">
+			<thead>
+				<tr>
+					<th>Propietario</th>
+					<th>Mascota</th>
+					<th>Sintoma</th>
+					<th>Fecha de Salida</th>
+				</tr>
+			</thead>
+			<tbody id="padreTablaSalida">
+
+
+            </tbody>
+		</table>
+        </body>
+
+		<script src="script.js"></script>
+	</body>
+</html>
