@@ -5,11 +5,12 @@ if (registroEntradas.length > 0) {
         crearTarjeta(o);
     })
 }
-/*si ya hay elemento en local storage se agrega en tabla*/
+ /*si ya hay elemento en local storage se agrega en tabla*/
 let registroSalidas = JSON.parse(localStorage.getItem("salida")) ?? [];
-console.log(registroSalidas)
-if(registroSalidas.length>0){
-    crearTablaSalida()
+if(registroSalidas.length>0) {
+    registroSalidas.forEach(item=>{
+        crearTablaSalida(item)
+    }) 
 }
 
 // obtener formulario mas evento
@@ -21,7 +22,14 @@ btnForm.addEventListener("click", (e) => {
     let sintomas = document.querySelector("#sintomas").value;
     let mascota = document.querySelector("#mascota").value;
     let fecha = document.querySelector("#dateIngreso").value;
-    registrarEntradas(propietario, sintomas, fecha, mascota)
+    if ([propietario,sintomas,mascota,fecha].includes("")){
+        alert("Todos los campos son requeridos");
+        return;
+    }
+    else {
+        registrarEntradas(propietario, sintomas, fecha, mascota)
+    }
+    
 })
 
 function registrarEntradas(propietario, sintomas, fecha, mascota) {
@@ -40,10 +48,10 @@ function crearTarjeta(objeto) {
         let tarjeta = ``;
         tarjeta = `
             <div id="${objeto.id}" class="contenido">
-                <h5> propietario: ${objeto.propietario}</h5>
-                <h6> mascota : ${objeto.mascota}</h6>
-                <p> sintomas : ${objeto.sintomas}</p>
-                <p> fecha ingreso : ${objeto.fecha}</p>
+                <h3> Propietario: ${objeto.propietario}</h5>
+                <h3> Mascota : ${objeto.mascota}</h6>
+                <p> Sintomas : ${objeto.sintomas}</p>
+                <p> Fecha ingreso : ${objeto.fecha}</p>
                 <button onclick="registrarSalida(${objeto.id})">Registrar salida</button>
                 <p>                                                                      </p>
             </div>
@@ -58,14 +66,14 @@ function registrarSalida(id) {
         if (o.id == id) {
             o.fechaSalida = new Date(); // agregamos la fecha de salida
             registroSalidas.push(o);
+            crearTablaSalida(o);
             localStorage.setItem("salida",JSON.stringify(registroSalidas))
-            crearTablaSalida();
+            
         };
     })
     // esto es para borrar del arreglo al objeto que vamos a sacar de la tarjeta
         registroEntradas = registroEntradas.filter((o) => {
         return o.id !== id;
-
     })
     // eliminamos el local storage para remplazarlo sin el objeto sacado
     localStorage.removeItem("registros")
@@ -78,15 +86,10 @@ function registrarSalida(id) {
     padre.removeChild(tarjeta);
 }
 
-function crearTablaSalida() {
-    let d = []
-     d = JSON.parse(localStorage.getItem("salida"))
-     d.forEach((d)=>{    
-         console.log(d)
-            
+function crearTablaSalida(d) {
     let tabla = ``;
     tabla = `
-        <tr id="${d.id}"></tr>
+        <tr id="${d.id} class="tablaSalida"></tr>
         <td>${d.propietario}</td>
         <td>${d.mascota}</td>
         <td>${d.sintomas}</td>
@@ -94,7 +97,6 @@ function crearTablaSalida() {
         `;
     document.querySelector("#padreTablaSalida").insertAdjacentHTML("afterbegin", tabla);
    
-}) 
      }
 
 function saveStorage(){

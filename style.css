@@ -1,0 +1,60 @@
+.formulario {
+    text-align: center;
+    background: blanchedalmond;
+}
+
+.formulario label {
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h1 {
+    font-family: sans-serif;
+    font-size: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: blanchedalmond;
+    font-weight: bold;
+
+}
+
+.formulario button {
+    border-radius: 99px;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: none;
+    background: rgb(252, 252, 255);
+}
+
+#padreTarjetas .contenido {
+    background:rgb(51, 211, 12);
+    background: rgb(196, 185, 169);
+}
+
+.contenido h3 {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#padreTarjetas {
+    width: 180px;
+}
+
+
+.tablaSalida tr,td  {
+    width: 150px;
+    padding: 10px 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+th {
+    padding: 15px 20px;
+    margin-top: 10px;
+    background: blanchedalmond;
+}
+
+tr:hover {
+    background: rgb(110, 110, 109);
+}
